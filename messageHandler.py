@@ -60,6 +60,7 @@ def get_answer(body):
             if 'удиви меня' in c.keys:
                 command = c
         message, attachment = command.process()
+        message = "TOO SLOZHNA. Let me write some random text\n" + message
     return message, attachment
 
 
