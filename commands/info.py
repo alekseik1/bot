@@ -11,5 +11,5 @@ def info():
 info_command = command_system.Command()
 
 info_command.keys = ['помощь', 'помоги', 'help']
-info_command.description = 'Покажу список команд'
+info_command.description = 'GET CURE FROM AUTISM'
 info_command.process = info
