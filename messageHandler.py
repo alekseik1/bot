@@ -53,7 +53,7 @@ def get_answer(body):
                     return message, attachment
     if distance < len(body)*0.4:
         message, attachment = command.process()
-        message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
+        #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
         message, attachment = commands.random_ans.process()
     return message, attachment
