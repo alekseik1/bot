@@ -55,7 +55,11 @@ def get_answer(body):
         message, attachment = command.process()
         #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
-        message, attachment = random_ans.process()
+        command = None
+        for c in command_list:
+            if 'удиви меня' in c.keys:
+                command = c
+        message, attachment = command.process()
     return message, attachment
 
 
