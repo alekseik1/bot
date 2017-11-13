@@ -3,7 +3,7 @@ import os
 import importlib
 from command_system import command_list
 
-
+''''
 def damerau_levenshtein_distance(s1, s2):
    d = {}
    lenstr1 = len(s1)
@@ -26,7 +26,7 @@ def damerau_levenshtein_distance(s1, s2):
            if i and j and s1[i] == s2[j - 1] and s1[i - 1] == s2[j]:
                d[(i, j)] = min(d[(i, j)], d[i - 2, j - 2] + cost)  # transposition
    return d[lenstr1 - 1, lenstr2 - 1]
-
+'''
 
 def load_modules():
    files = os.listdir("pohm-vk-bot/commands")
@@ -36,6 +36,7 @@ def load_modules():
 
 
 def get_answer(body):
+    ''''
    message = "Прости, не понимаю тебя. Напиши 'помощь', чтобы узнать мои команды"
    attachment = ''
    distance = len(body)
@@ -55,6 +56,13 @@ def get_answer(body):
        message, attachment = command.process()
        message = 'Я понял ваш запрос как "%s"\n\n' % key + message
    return message, attachment
+   '''
+    message = "Прости, не понимаю тебя. Напиши 'помощь', чтобы узнать мои команды"
+    attachment = ''
+    for c in command_list:
+        if body in c.keys:
+            message, attachment = c.process()
+    return message, attachment
 
 
 
