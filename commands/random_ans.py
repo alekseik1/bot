@@ -7,7 +7,7 @@ def random_answer():
     n = random.randint(1, 3)
     if n == 1:
         attachment = ''
-        attachment = vkapi.get_random_wall_photo(-27456813)
+        attachment = vkapi.get_random_wall_image(-27456813)
         message = 'PACANY OTVETYAT'
     elif n == 2:
         attachment = vkapi.get_random_wall_image(-1)
