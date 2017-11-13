@@ -9,10 +9,10 @@ def random_answer():
         attachment = ''
         #attachment = vkapi.get_random_wall_attachment(-27456813)
         message = 'PACANY OTVETYAT'
-    else if n == 2:
+    elif n == 2:
         attachment = vkapi.get_random_wall_image(-1)
         message = 'Sorry for content. My boss is still a bad programmer :('
-    else if n == 3:
+    elif n == 3:
         attachment = ''
         message = "I'm tired. Let me relax..."
     return message, attachment
