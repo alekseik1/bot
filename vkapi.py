@@ -12,6 +12,9 @@ def get_random_wall_picture(group_id):
     attachment = 'photo' + str(group_id) + '_' + str(photo)
     return attachment
 
+def get_random_wall_attachment(group_id):
+    pass
+
 
 def send_message(user_id, token, message, attachment=""):
     api.messages.send(access_token=token, user_id=str(user_id), message=message, attachment=attachment)

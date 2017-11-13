@@ -36,7 +36,7 @@ def load_modules():
 
 
 def get_answer(body):
-    message = "TOO SLOZHNA. Type 'help' to get help"
+    message = "TOO SLOZHNA. Let me write some random text"
     attachment = ""
     distance = len(body)
     command = None
@@ -54,6 +54,8 @@ def get_answer(body):
     if distance < len(body)*0.4:
         message, attachment = command.process()
         message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
+    else:
+        message, attachment = commands.random_ans.process()
     return message, attachment
 
 
