@@ -3,7 +3,7 @@ import vkapi
 import random
 
 def random_answer():
-    r = random.seed()
+    #r = random.seed()
     n = random.randint(1, 3)
     if n == 1:
         attachment = ''
