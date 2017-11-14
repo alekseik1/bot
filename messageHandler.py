@@ -71,7 +71,7 @@ def get_answer(body):
         cmd = "cd markov-text; python markov.py parse pryt 2 speech.txt; python markov.py gen pryt 5;"
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         out, err = p.communicate()
-        message = str(out).decode('utf-8')
+        message = str(out)
         attachment = ''
         #commands.markov.main(["parse", "pryt", "markov-text/speech.txt"])
         #message = commands.markov.main(["gen", "pryt", "5"])
