@@ -3,6 +3,7 @@ import os
 import importlib
 from command_system import command_list
 import subprocess
+import markov-text.markov as markov
 
 def damerau_levenshtein_distance(s1, s2):
     d = {}
@@ -62,10 +63,13 @@ def get_answer(body):
                 command = c
         message, attachment = command.process()
         '''
-        cmd = "python markov.py pryt 2 markov-text/markov.py"
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-        out, err = p.communicate()
-        message = out
+        #cmd = "python markov.py pryt 2 markov-text/markov.py"
+        #p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+        #out, err = p.communicate()
+        #message = out
+        #attachment = ''
+        markov.main(["parse", "pryt", "markov-text/speech.txt"])
+        message = markov.main(["gen", "pryt", "5"])
         attachment = ''
     return message, attachment
 
