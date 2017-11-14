@@ -33,11 +33,12 @@ def load_modules():
     modules = filter(lambda x: x.endswith('.py'), files)
     for m in modules:
         importlib.import_module("commands." + m[0:-3])
-
+    ''''
     files = os.listdir("markov-text")
     modules = filter(lambda x: x.endswith('.py'), files)
     for m in modules:
         importlib.import_module("markov-text." + m[0:-3])
+    '''
 
 
 def get_answer(body):
