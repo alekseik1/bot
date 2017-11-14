@@ -2,7 +2,7 @@ import vkapi
 import os
 import importlib
 from command_system import command_list
-
+import subprocess
 
 def damerau_levenshtein_distance(s1, s2):
     d = {}
@@ -60,7 +60,11 @@ def get_answer(body):
             if 'удиви меня' in c.keys:
                 command = c
         message, attachment = command.process()
-        message = "TOO SLOZHNA. Let me write some random text\n" + message
+        if c is None:
+            cmd = "python2 markov.py pryt 2 markov-text/markov.py"
+            p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+            out, err = p.communicate()
+            message = out
     return message, attachment
 
 
