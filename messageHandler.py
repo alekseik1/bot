@@ -56,15 +56,17 @@ def get_answer(body):
         #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
         command = None
+        '''
         for c in command_list:
             if 'удиви меня' in c.keys:
                 command = c
         message, attachment = command.process()
-        if c is None:
-            cmd = "python2 markov.py pryt 2 markov-text/markov.py"
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-            out, err = p.communicate()
-            message = out
+        '''
+        cmd = "python2 markov.py pryt 2 markov-text/markov.py"
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+        out, err = p.communicate()
+        message = out
+        attachment = ''
     return message, attachment
 
 
