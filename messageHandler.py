@@ -68,7 +68,7 @@ def get_answer(body):
                 command = c
         message, attachment = command.process()
         '''
-        cmd = "cd markov-text; python markov.py gen pryt 5;"
+        cmd = "cd markov-text; python markov.py parse pryt 2 speech.txt; python markov.py gen pryt 5;"
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         out, err = p.communicate()
         message = out
