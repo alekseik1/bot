@@ -62,7 +62,7 @@ def get_answer(body):
                 command = c
         message, attachment = command.process()
         '''
-        cmd = "python2 markov.py pryt 2 markov-text/markov.py"
+        cmd = "python markov.py pryt 2 markov-text/markov.py"
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         out, err = p.communicate()
         message = out
