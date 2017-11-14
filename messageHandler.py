@@ -76,6 +76,7 @@ def get_answer(body):
         #commands.markov.main(["parse", "pryt", "markov-text/speech.txt"])
         #message = commands.markov.main(["gen", "pryt", "5"])
         #attachment = ''
+    print("message is: " + message)
     return message, attachment
 
 
