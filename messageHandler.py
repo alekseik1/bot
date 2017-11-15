@@ -2,7 +2,6 @@ import vkapi
 import os
 import importlib
 from command_system import command_list
-import subprocess
 
 def damerau_levenshtein_distance(s1, s2):
     d = {}
