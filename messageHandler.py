@@ -62,21 +62,12 @@ def get_answer(body):
         #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
         command = None
-        '''
+        # ВЫПУСКАЙТЕ ПРУТА!
         for c in command_list:
-            if 'удиви меня' in c.keys:
+            if 'pryt' in c.keys:
                 command = c
-        message, attachment = command.process()
-        '''
-        n = 3
-        cmd = "cd markov-text; python markov.py parse pryt 2 speech.txt; python markov.py gen pryt {};".format(n)
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-        out, err = p.communicate()
-        message = out.decode('utf-8')
-        attachment = ''
-        #commands.markov.main(["parse", "pryt", "markov-text/speech.txt"])
-        #message = commands.markov.main(["gen", "pryt", "5"])
-        #attachment = ''
+                break
+    message, attachmet = command.process()
     print("message is: " + message)
     return message, attachment
 
