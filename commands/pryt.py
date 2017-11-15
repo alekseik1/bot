@@ -2,7 +2,7 @@ import command_system
 import subprocess
 
 
-def pryt(body):
+def pryt(body=""):
     message = ''
     n = 3
     cmd = "cd markov-text; echo {} >> speech.txt; python markov.py parse pryt 2 speech.txt; python markov.py gen pryt {};".format(body, n)
@@ -12,9 +12,6 @@ def pryt(body):
     attachment = ''
     print("message is: " + message)
     return message, attachment
-
-def pryt():
-    return pryt("")
 
 
 pryt_command = command_system.Command()
