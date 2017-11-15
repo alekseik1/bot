@@ -78,3 +78,5 @@ def create_answer(data, token):
     print("Data came: ", data) # Debug print.
     message, attachment = get_answer(data['body'].lower())
     vkapi.send_message(user_id, token, message, attachment)
+
+# TODO: Сохранение файлов между сессиями
