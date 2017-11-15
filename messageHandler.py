@@ -66,7 +66,7 @@ def get_answer(body):
             if 'pryt' in c.keys:
                 command = c
                 break
-    message, attachmet = command.process()
+        message, attachmet = command.process(body)  # Теперь генератор обрабатывает вашу речь. Бойтесь ИИ!
     print("message is: " + message)
     return message, attachment
 
@@ -75,5 +75,6 @@ def get_answer(body):
 def create_answer(data, token):
     load_modules()
     user_id = data['user_id']
+    print("Data came: " + data) # Debug print.
     message, attachment = get_answer(data['body'].lower())
     vkapi.send_message(user_id, token, message, attachment)
