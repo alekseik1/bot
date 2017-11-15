@@ -5,7 +5,7 @@ import subprocess
 def pryt(body=""):
     message = ''
     n = 3
-    cmd = "cd markov-text; echo {} >> speech.txt; python markov.py parse pryt 2 speech.txt; python markov.py gen pryt {};".format(body, n)
+    cmd = "cd markov-text; echo \'{}\' >> speech.txt; python markov.py parse pryt 2 speech.txt; python markov.py gen pryt {};".format(body, n)
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     out, err = p.communicate()
     message = out.decode('utf-8')
