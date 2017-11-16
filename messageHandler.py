@@ -44,7 +44,7 @@ def get_answer(data):
     # Maintainance mode
     m_mode = True
     if m_mode:
-        if(data['used_id'] != 92540660):
+        if(data['user_id'] != 92540660):
             message = "Прости, но я сейчас в режиме обслуживания. Не могу говорить, ботаю теорфиз"
             attachment = ''
             return message, attachment
