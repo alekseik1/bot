@@ -94,9 +94,9 @@ def create_answer(data, token):
     message, attachment = get_answer(data)
     # Извинимся 1 раз
     do_once = True
-    if do_once:
-        sorry(token)
-        do_once = False
+    #if do_once:
+      #  sorry(token)
+       # do_once = False
 
     vkapi.send_message(user_id, token, message, attachment)
 
