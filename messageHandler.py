@@ -47,7 +47,7 @@ def sorry(token):
 def get_answer(data):
 
     # Maintainance mode
-    m_mode = True
+    m_mode = False
     if m_mode:
         if(data['user_id'] != 92540660):
             message = "Прости, но я сейчас в режиме обслуживания. Не могу говорить, ботаю теорфиз"
@@ -93,11 +93,11 @@ def create_answer(data, token):
     print("Data came: ", data) # Debug print.
     message, attachment = get_answer(data)
     # Извинимся 1 раз
-    do_once = True
-    if do_once:
-        print("SENDING SORRY!!!")
-        sorry(token)
-        do_once = False
+    #do_once = True
+    #if do_once:
+    #    print("SENDING SORRY!!!")
+    #    sorry(token)
+    #    do_once = False
 
     vkapi.send_message(user_id, token, message, attachment)
 
