@@ -48,8 +48,8 @@ def get_answer(data):
             message = "Прости, но я сейчас в режиме обслуживания. Не могу говорить, ботаю теорфиз"
             attachment = ''
             return message, attachment
-    else:
-        data = data['body'].lower()
+
+    data = data['body'].lower()
 
     message = "TOO SLOZHNA. Let me write some random text"
     attachment = ""
