@@ -15,6 +15,12 @@ def get_random_wall_picture(group_id):
 def get_random_wall_attachment(group_id):
     pass
 
+def get_previous_interlocutors(token):
+    dialogs = api.messages.getDialogs(access_token=token)
+    ids = []
+    for message in dialogs['items']:
+        ids.append(message['user_id'])
+    return ids
 
 def send_message(user_id, token, message, attachment=""):
     api.messages.send(access_token=token, user_id=str(user_id), message=message, attachment=attachment)
