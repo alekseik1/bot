@@ -40,15 +40,25 @@ def load_modules():
     '''
 
 
-def get_answer(body):
+def get_answer(data):
+    # Maintainance mode
+    m_mode = True
+    if m_mode:
+        if(data['used_id'] != 92540660):
+            message = "Прости, но я сейчас в режиме обслуживания. Не могу говорить, ботаю теорфиз"
+            attachment = ''
+            return message, attachment
+    else:
+        data = data['body'].lower()
+
     message = "TOO SLOZHNA. Let me write some random text"
     attachment = ""
-    distance = len(body)
+    distance = len(data)
     command = None
     key = ""
     for c in command_list:
         for k in c.keys:
-            d = damerau_levenshtein_distance(body, k)
+            d = damerau_levenshtein_distance(data, k)
             if d < distance:
                 distance = d
                 command = c
@@ -56,7 +66,7 @@ def get_answer(body):
                 if distance == 0:
                     message, attachment = c.process()
                     return message, attachment
-    if distance < len(body)*0.4:
+    if distance < len(data)*0.4:
         message, attachment = command.process()
         #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
@@ -66,7 +76,7 @@ def get_answer(body):
             if 'pryt' in c.keys:
                 command = c
                 break
-        message, attachmet = command.process(body)  # Теперь генератор обрабатывает вашу речь. Бойтесь ИИ!
+        message, attachmet = command.process(data)  # Теперь генератор обрабатывает вашу речь. Бойтесь ИИ!
     print("message is: " + message)
     return message, attachment
 
@@ -76,7 +86,7 @@ def create_answer(data, token):
     load_modules()
     user_id = data['user_id']
     print("Data came: ", data) # Debug print.
-    message, attachment = get_answer(data['body'].lower())
+    message, attachment = get_answer(data)
     vkapi.send_message(user_id, token, message, attachment)
 
 # TODO: Сохранение файлов между сессиями
