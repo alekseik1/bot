@@ -21,3 +21,4 @@ def processing():
     elif data['type'] == 'message_new':
         messageHandler.create_answer(data['object'], token)
         return 'ok'
+    return 'ok'
