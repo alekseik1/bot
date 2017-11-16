@@ -32,15 +32,20 @@ def load_modules():
     modules = filter(lambda x: x.endswith('.py'), files)
     for m in modules:
         importlib.import_module("commands." + m[0:-3])
-    ''''
-    files = os.listdir("markov-text")
-    modules = filter(lambda x: x.endswith('.py'), files)
-    for m in modules:
-        importlib.import_module("markov-text." + m[0:-3])
-    '''
+
+'''
+Извиниться за предыдущее и сообщить о перезаливе
+@param: ids id пользователей, которым надо разослать
+'''
+def sorry(token):
+    ids = vkapi.get_previous_interlocutors(token)
+    message = "Привет :)\nЯ, возможно, написал тебе кучу дряни. Хочу извиниться, ведь я всего лишь бездумно учился у других. Теперь же меня перезалили. Я начну учиться правильно, обещаю!"
+    for user_id in ids:
+        vkapi.send_message(user_id, token, message, '')
 
 
 def get_answer(data):
+
     # Maintainance mode
     m_mode = True
     if m_mode:
@@ -87,6 +92,12 @@ def create_answer(data, token):
     user_id = data['user_id']
     print("Data came: ", data) # Debug print.
     message, attachment = get_answer(data)
+    # Извинимся 1 раз
+    do_once = True
+    if do_once:
+        sorry(token)
+        do_once = False
+
     vkapi.send_message(user_id, token, message, attachment)
 
 # TODO: Сохранение файлов между сессиями
