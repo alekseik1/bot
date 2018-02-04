@@ -1,7 +1,7 @@
 import command_system
 
 
-def hello():
+def hello(body=""):
    message = 'Welcome, wanderer.\n 8ka Inc. is happy to meet you'
    return message, ''
 

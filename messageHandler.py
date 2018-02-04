@@ -69,10 +69,10 @@ def get_answer(data):
                 command = c
                 key = k
                 if distance == 0:
-                    message, attachment = c.process()
+                    message, attachment = c.process(data)
                     return message, attachment
     if distance < len(data)*0.4:
-        message, attachment = command.process()
+        message, attachment = command.process(data)
         #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
         command = None

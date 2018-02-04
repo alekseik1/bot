@@ -2,7 +2,7 @@ import command_system
 import vkapi
 import random
 
-def random_answer():
+def random_answer(body=""):
     #r = random.seed()
     n = random.randint(1, 3)
     if n == 1:
