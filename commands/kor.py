@@ -61,7 +61,7 @@ def kor(body=""):
     if page:
         return 'Задача {} найдена на странице {}'.format(task, page), ''
     else:
-        return 'Задача не найдена в Корявове!'
+        return 'Задача не найдена в Корявове!', ''
 
 
 kor_command = command_system.Command()
