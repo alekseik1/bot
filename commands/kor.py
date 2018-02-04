@@ -43,6 +43,7 @@ def _capture_error(sem_and_task: list):
 def kor(body=""):
     sem_and_task = re.findall(r'\d+\.?\d*', body)
     sem, task = _parse_sem_and_task(sem_and_task)
+    print("Got sem {}; got task {}".format(sem, task))
 
     if sem not in [1, 2, 3, 4, 5]:
         return 'Я не смогу найти задачи для этого семестра!', ''
