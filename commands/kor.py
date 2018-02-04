@@ -31,6 +31,10 @@ def _parse_sem_and_task(sem_and_task: list):
         sem = sem_and_task[0]
     else:
         return -1, -1
+    try:
+        sem = int(sem)
+    except:
+        return -1, -1
     return sem, task
 
 
@@ -43,7 +47,7 @@ def _capture_error(sem_and_task: list):
 def kor(body=""):
     sem_and_task = re.findall(r'\d+\.?\d*', body)
     sem, task = _parse_sem_and_task(sem_and_task)
-    print("Got sem {}; got task {}".format(sem, task))
+    print("Got sem_and_task {}; Got sem {}; got task {}".format(sem_and_task, sem, task))
 
     if sem not in [1, 2, 3, 4, 5]:
         return 'Я не смогу найти задачи для этого семестра!', ''
@@ -62,6 +66,15 @@ def kor(body=""):
 
 kor_command = command_system.Command()
 
-kor_command.keys = ['Задача 4 1.11', 'найти в корявове 4 1.11', 'поиск в коряове 4 1.11', 'корявов 4 1.11']
+kor_command.keys = ['Задача 4 1.11', 'найти в корявове 4 1.11', 'поиск в коряове 4 1.11', 'корявов 4 1.11',
+
+                    'Задача 4 семестр 1.11', 'найти в корявове 4 семестр 1.11', 'поиск в коряове 4 семестр 1.11',
+                    'корявов 4 семестр 1.11',
+
+                    'найти в корявове 4 1.11 задача', 'поиск в коряове 4 1.11 задача', 'корявов 4 1.11 задача',
+
+                    'Задача 4 семестр 1.11', 'найти в корявове 4 семестр 1.11 задача',
+                    'поиск в коряове 4 семестр 1.11 задача', 'корявов 4 семестр 1.11 задача'
+                    ]
 kor_command.description = 'Поиск задачи в корявове'
 kor_command.process = kor
