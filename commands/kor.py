@@ -22,7 +22,7 @@ def get_solutions(course, task: list):
 
 def _parse_sem_and_task(sem_and_task: list):
     if len(sem_and_task) != 2:
-        return _capture_error(sem_and_task), 0
+        return -1, -1
     if re.findall(r'\.', sem_and_task[0]):
         task = sem_and_task[0]
         sem = sem_and_task[1]
@@ -30,7 +30,7 @@ def _parse_sem_and_task(sem_and_task: list):
         task = sem_and_task[1]
         sem = sem_and_task[0]
     else:
-        return _capture_error(sem_and_task), 0
+        return -1, -1
     return sem, task
 
 
