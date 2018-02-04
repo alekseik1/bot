@@ -49,6 +49,6 @@ def kor(body=""):
 
 kor_command = command_system.Command()
 
-kor_command.keys = ['Задача', 'найти в корявове', 'поиск в коряове', 'корявов']
+kor_command.keys = ['Задача 4 1.11', 'найти в корявове 4 1.11', 'поиск в коряове 4 1.11', 'корявов 4 1.11']
 kor_command.description = 'Поиск задачи в корявове'
 kor_command.process = kor
