@@ -35,7 +35,7 @@ def _parse_sem_and_task(sem_and_task: list):
 
 
 def _capture_error(sem_and_task: list):
-    warn('sem_and_task is {};\nsem passed is {};\ntask passed is {}'
+    print('sem_and_task is {};\nsem passed is {};\ntask passed is {}'
          .format(sem_and_task, *_parse_sem_and_task(sem_and_task)))
     return 'Некорректный запрос! Нужно писать номер семестра и номер задачи'
 
