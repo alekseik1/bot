@@ -20,9 +20,12 @@ def get_solutions(course, task: list):
         return page
 
 
+err_msg = 'Некорректный запрос! Нужно писать номер семестра и номер задачи'
+
+
 def _parse_sem_and_task(sem_and_task: list):
     if len(sem_and_task) != 2:
-        return -1, -1
+        raise ValueError(err_msg)
     if re.findall(r'\.', sem_and_task[0]):
         task = sem_and_task[0]
         sem = sem_and_task[1]
@@ -30,23 +33,20 @@ def _parse_sem_and_task(sem_and_task: list):
         task = sem_and_task[1]
         sem = sem_and_task[0]
     else:
-        return -1, -1
+        raise ValueError(err_msg)
     try:
         sem = int(sem)
-    except:
-        return -1, -1
+    except ValueError:
+        raise ValueError(err_msg)
     return sem, task
-
-
-def _capture_error(sem_and_task: list):
-    print('sem_and_task is {};\nsem passed is {};\ntask passed is {}'
-         .format(sem_and_task, *_parse_sem_and_task(sem_and_task)))
-    return 'Некорректный запрос! Нужно писать номер семестра и номер задачи'
 
 
 def kor(body=""):
     sem_and_task = re.findall(r'\d+\.?\d*', body)
-    sem, task = _parse_sem_and_task(sem_and_task)
+    try:
+        sem, task = _parse_sem_and_task(sem_and_task)
+    except ValueError as e:
+        return str(e), ''
     print("Got sem_and_task {}; Got sem {}; got task {}".format(sem_and_task, sem, task))
 
     if sem not in [1, 2, 3, 4, 5]:
@@ -55,7 +55,7 @@ def kor(body=""):
         try:
             page = get_solutions(sem, [task])
         except:
-            return 'Некорректный запрос! Нужно писать номер семестра и номер задачи', ''
+            return 'Что-то пошло не так. Ты уверен, что написал номер семестра и номер задачи?', ''
     else:
         return 'Я не смог найти эту задачу в Корявове!'
     if page:
