@@ -2,6 +2,7 @@ import command_system
 import requests as req
 from bs4 import BeautifulSoup
 import re
+from warnings import warn
 
 
 def get_solutions(course, task: list):
@@ -19,10 +20,9 @@ def get_solutions(course, task: list):
         return page
 
 
-def kor(body=""):
-    sem_and_task = re.findall(r'\d+\.?\d*', body)
+def _parse_sem_and_task(sem_and_task: list):
     if len(sem_and_task) != 2:
-        return 'Некорректный запрос! Нужно писать номер семестра и номер задачи', ''
+        return _capture_error(sem_and_task), 0
     if re.findall(r'\.', sem_and_task[0]):
         task = sem_and_task[0]
         sem = sem_and_task[1]
@@ -30,7 +30,19 @@ def kor(body=""):
         task = sem_and_task[1]
         sem = sem_and_task[0]
     else:
-        return 'Некорректный запрос! Нужно писать номер семестра и номер задачи', ''
+        return _capture_error(sem_and_task), 0
+    return sem, task
+
+
+def _capture_error(sem_and_task: list):
+    warn('sem_and_task is {};\nsem passed is {};\ntask passed is {}'
+         .format(sem_and_task, *_parse_sem_and_task(sem_and_task)))
+    return 'Некорректный запрос! Нужно писать номер семестра и номер задачи'
+
+
+def kor(body=""):
+    sem_and_task = re.findall(r'\d+\.?\d*', body)
+    sem, task = _parse_sem_and_task(sem_and_task)
 
     if sem not in [1, 2, 3, 4, 5]:
         return 'Я не смогу найти задачи для этого семестра!', ''
