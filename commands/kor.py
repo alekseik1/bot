@@ -71,7 +71,7 @@ def kor(body=""):
     else:
         return 'Я не смог найти эту задачу в Корявове!'
     if page:
-        return 'Задача {} найдена на странице {}'.format(task, page), ''
+        return 'Задача {} найдена на странице {}\nСкажите спасибо mipt1.ru'.format(task, page), ''
     else:
         return 'Задача не найдена в Корявове!', ''
 
