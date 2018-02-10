@@ -75,13 +75,7 @@ def get_answer(data):
         message, attachment = command.process(data)
         #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
-        command = None
-        # ВЫПУСКАЙТЕ ПРУТА!
-        for c in command_list:
-            if 'pryt' in c.keys:
-                command = c
-                break
-        message, attachmet = command.process(data)  # Теперь генератор обрабатывает вашу речь. Бойтесь ИИ!
+        message, attachment = "", ""
     print("message is: " + message)
     return message, attachment
 
