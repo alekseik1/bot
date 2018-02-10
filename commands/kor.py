@@ -22,24 +22,36 @@ def get_solutions(course, task: list):
 
 err_msg = 'Некорректный запрос! Нужно писать номер семестра и номер задачи'
 
+DEFAULT_SEMESTER = 3
 
 def _parse_sem_and_task(sem_and_task: list):
-    if len(sem_and_task) != 2:
-        raise ValueError(err_msg)
-    if re.findall(r'\.', sem_and_task[0]):
-        task = sem_and_task[0]
-        sem = sem_and_task[1]
-    elif re.findall(r'\.', sem_and_task[1]):
-        task = sem_and_task[1]
-        sem = sem_and_task[0]
-    else:
-        raise ValueError(err_msg)
-    try:
-        sem = int(sem)
-    except ValueError:
+    if len(sem_and_task) == 2:
+        # 2 passed parameters
+        if re.findall(r'\.', sem_and_task[0]):
+            task = sem_and_task[0]
+            sem = sem_and_task[1]
+        elif re.findall(r'\.', sem_and_task[1]):
+            task = sem_and_task[1]
+            sem = sem_and_task[0]
+        else:   # Bad parsing
+            raise ValueError(err_msg)
+        try:
+            sem = int(sem)
+        except ValueError:
+            raise ValueError(err_msg)
+    elif len(sem_and_task) == 1:
+        # 1 passed parameter
+        if re.findall(r'\.', sem_and_task[0]):
+            task = sem_and_task[0]
+            sem = DEFAULT_SEMESTER
+        elif re.findall(r'\.', sem_and_task[1]):
+            task = sem_and_task[1]
+            sem = DEFAULT_SEMESTER
+        else:   # Bad parsing
+            raise ValueError(err_msg)
+    else:   # len(sem_and_task) is not 1 or 2
         raise ValueError(err_msg)
     return sem, task
-
 
 def kor(body=""):
     sem_and_task = re.findall(r'\d+\.?\d*', body)
