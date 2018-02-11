@@ -92,7 +92,7 @@ def create_answer(data, token):
     #    print("SENDING SORRY!!!")
     #    sorry(token)
     #    do_once = False
-
-    vkapi.send_message(user_id, token, message, attachment)
+    if message or attachment:
+        vkapi.send_message(user_id, token, message, attachment)
 
 # TODO: Сохранение файлов между сессиями
