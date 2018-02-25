@@ -71,7 +71,7 @@ def get_answer(data):
                 if distance == 0:
                     message, attachment = c.process(data)
                     return message, attachment
-    if distance < len(data)*0.4:
+    if distance < len(data)*0.5:
         message, attachment = command.process(data)
         #message = 'Ya CLEVER. Pohozhe, ti napisal "%s"\n\n' % key + message
     else:
