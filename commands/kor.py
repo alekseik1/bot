@@ -8,6 +8,8 @@ from warnings import warn
 def get_solutions(course, task: list):
     site = 'https://mipt1.ru/1_2_3_4_5_kor.php?sem=%d&zad={}' % course
     for t in task:
+        # Change `,` to `.` to procceed with mipt1
+        t.replace(',', '.')
         # Get page
         r = req.get(site.format(t))
         r.encoding = 'cp1251'
