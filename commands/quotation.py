@@ -8,8 +8,8 @@ from random import sample
 def quotation(body=""):
     n = 3
     posts = get_wall_posts(token, '-128692347')
-    # Отбираем 400 рандомных постов
-    posts = sample(posts, 400)
+    # Отбираем половину рандомных постов
+    posts = sample(posts, len(posts)//2)
     # Чистим посты от #..
     posts = list(map(lambda x: x[:x.find('#')], posts))
     cmd = "cd markov-text; echo \'{}\' >> speech.txt;" \
