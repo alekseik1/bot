@@ -7,9 +7,11 @@ from settings import token
 def quotation(body=""):
     n = 3
     posts = get_wall_posts(token, '-128692347')
+    # Чистим посты от #..
+    posts = list(map(lambda x: x[:x.find('#')], posts))
     cmd = "cd markov-text; echo \'{}\' >> speech.txt;" \
-          " python markov.py parse pryt 2 speech.txt; " \
-          "python markov.py gen pryt {};".format('\n'.join(posts), n)
+          " python markov.py parse quote 2 speech.txt; " \
+          "python markov.py gen qoute {};".format('\n'.join(posts), n)
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     out, err = p.communicate()
     message = out.decode('utf-8')
