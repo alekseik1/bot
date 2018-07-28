@@ -2,11 +2,14 @@ import command_system
 import subprocess
 from vkapi import get_wall_posts
 from settings import token
+from random import sample
 
 
 def quotation(body=""):
     n = 3
     posts = get_wall_posts(token, '-128692347')
+    # Отбираем 400 рандомных постов
+    posts = sample(posts, 400)
     # Чистим посты от #..
     posts = list(map(lambda x: x[:x.find('#')], posts))
     cmd = "cd markov-text; echo \'{}\' >> speech.txt;" \
