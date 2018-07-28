@@ -25,3 +25,20 @@ def get_previous_interlocutors(token):
 def send_message(user_id, token, message, attachment=""):
     api.messages.send(access_token=token, user_id=str(user_id), message=message, attachment=attachment)
 
+
+def get_wall_posts(group_id: str):
+    """
+    Получает все посты с указанной группы. Картинки и прочее медиа **игнорируются**.
+
+    :param group_id: Номер группы vk
+    :type group_id: str
+    :return: Объект list, содержащий строковые сообщения.
+    """
+
+    # TODO: почему-то токен группы не подходит для данного запроса. Разберись с этим потом
+    special_token = 'd85ec3aebcf1553c7b19ff2f8d561531d48a6785ae432e06154d435418ad6b25e9d04877ec5ef6d0e054a'
+    posts = api.wall.get(owner_id=group_id, count=1000, access_token=special_token)
+    res = []
+    for i in posts['items']:
+        res.append(i['text'])
+    return res
