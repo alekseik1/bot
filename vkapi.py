@@ -26,7 +26,7 @@ def send_message(user_id, token, message, attachment=""):
     api.messages.send(access_token=token, user_id=str(user_id), message=message, attachment=attachment)
 
 
-def get_wall_posts(group_id: str):
+def get_wall_posts(token, group_id: str):
     """
     Получает все посты с указанной группы. Картинки и прочее медиа **игнорируются**.
 
@@ -37,6 +37,8 @@ def get_wall_posts(group_id: str):
 
     # TODO: почему-то токен группы не подходит для данного запроса. Разберись с этим потом
     special_token = 'd85ec3aebcf1553c7b19ff2f8d561531d48a6785ae432e06154d435418ad6b25e9d04877ec5ef6d0e054a'
+    session = vk.Session(access_token=token)
+    api = vk.API(session, v=5.0)
     posts = api.wall.get(owner_id=group_id, count=1000, access_token=special_token)
     res = []
     for i in posts['items']:

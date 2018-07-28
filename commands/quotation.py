@@ -1,11 +1,12 @@
 import command_system
 import subprocess
 from vkapi import get_wall_posts
+from settings import token
 
 
 def quotation(body=""):
     n = 3
-    posts = get_wall_posts('-128692347')
+    posts = get_wall_posts(token, '-128692347')
     cmd = "cd markov-text; echo \'{}\' >> speech.txt;" \
           " python markov.py parse pryt 2 speech.txt; " \
           "python markov.py gen pryt {};".format('\n'.join(posts), n)
