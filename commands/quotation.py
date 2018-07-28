@@ -3,7 +3,7 @@ import subprocess
 from vkapi import get_wall_posts
 
 
-def quotation():
+def quotation(body=""):
     n = 3
     posts = get_wall_posts('-128692347')
     cmd = "cd markov-text; echo \'{}\' >> speech.txt;" \
