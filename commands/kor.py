@@ -24,7 +24,7 @@ def get_solutions(course, task: list):
 
 err_msg = 'Некорректный запрос! Нужно писать номер семестра и номер задачи'
 
-DEFAULT_SEMESTER = 4
+DEFAULT_SEMESTER = 5
 
 def _parse_sem_and_task(sem_and_task: list):
     if len(sem_and_task) == 2:
