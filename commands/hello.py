@@ -2,7 +2,7 @@ import command_system
 
 
 def hello(body=""):
-   message = 'Welcome, wanderer.\n 8ka Inc. is happy to meet you'
+   message = 'Welcome, wanderer.\n 8ka Inc. is happy to meet you. Lesha knows how to joke'
    return message, ''
 
 hello_command = command_system.Command()
